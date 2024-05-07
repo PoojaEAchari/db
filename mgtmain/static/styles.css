@@ -1,0 +1,413 @@
+body {
+    font-family: Arial, sans-serif;
+     margin: 0;
+    padding: 0; 
+    background-image: url('kit.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: center; */
+}
+
+.item-container {
+    background-color: rgba(255, 255, 255, 0.341); /* Transparent white background */
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+#itemTable {
+    width: 100%;
+    border-collapse: collapse; /* Collapse table borders */
+}
+
+#itemTable th,
+#itemTable td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#itemTable th {
+    background-color: #f2f2f2; /* Light gray background for table header */
+}
+
+.edit {
+    background-color: rgba(0, 255, 0, 0.5); 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.delete {
+    background-color: rgba(255, 0, 0, 0.5); 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.edit:hover,
+.delete:hover {
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    background-color: #000;
+    font-size: 80px;
+    opacity: .7;
+    text-align: center;
+    color: #c98080;
+    margin-bottom: 50px;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form input {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 7px;
+    border: 3px solid #cccccc;
+    width: calc(50% - 20px);
+    max-width: 300px;
+}
+
+form #quantityUnit {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid #cccccc;
+    width: calc(50% - 20px);
+    max-width: 300px;   
+}
+
+
+button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 3px solid #cccccc;
+    border-radius: 5px;
+}
+
+button.edit {
+    background-color: #4caf50; /* Green color for edit button */
+    color: #ffffff;
+}
+
+button.delete {
+    background-color: #dc3545; /* Red color for delete button */
+    color: #ffffff;
+}
+
+button:hover {
+    filter: brightness(85%);
+}
+
+#alertBox {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #ffffff;
+    text-align: center;
+    z-index: 9999;
+}
+
+#alertBox.success {
+    background-color: #28a745;
+}
+
+#alertBox.error {
+    background-color: #dc3545;
+}
+
+/* Custom styling for checkboxes */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+    appearance: none; /* Remove default appearance */
+    width: 20px; /* Set width of checkbox */
+    height: 20px; /* Set height of checkbox */
+    border-radius: 5px; /* Rounded corners */
+    border: 3px solid #000000; /* Border color */
+    margin-right: 8px; /* Add some spacing */
+    cursor: pointer; /* Show pointer cursor */
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: #4caf50; /* Green color when checked */
+    border-color: #4caf50; /* Green border color when checked */
+}
+
+.checkbox-container input[type="checkbox"]:hover {
+    background-color: #f2f2f2; /* Light gray background on hover */
+}
+
+.checkbox-container input[type="checkbox"]:checked::before {
+    content: '\2713'; /* Unicode checkmark */
+    display: block;
+    text-align: center;
+    color: white; /* Text color */
+    font-size: 14px; /* Checkmark size */
+    line-height: 20px; /* Vertical alignment */
+}
+.buttons-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.buttons-container button {
+    margin: 0 10px;
+}
+
+.buttons-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.buttons-container button {
+    margin: 0 10px;
+    margin-bottom: 30px;
+    background-color: black;
+    opacity: .7;
+    color: #fffafa;
+    font-weight: bold;
+    border: 2px solid #fffcfc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.buttons-container button:hover {
+    background-color: #ded7d7;
+    color: #0a0909;
+}
+/* Styles for the container displaying items for selected date */
+#selectedDateItemsContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    z-index: 9999; /* Ensure it appears above other elements */
+}
+
+#selectedDateItems {
+    max-height: 400px; /* Limit height of the container */
+    overflow-y: auto; /* Add scroll if content exceeds container height */
+}
+
+#selectedDateItems p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.alert-error {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #dc3545; /* Red background color */
+    color: #fff; /* White text color */
+    z-index: 9999;
+}
+
+.btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 30px ;
+}
+
+#selectedDate{
+    margin: 0 10px;
+    opacity: .7;
+    font-weight: bold;
+    border: 2px solid #fffcfc;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+#selectedDate:hover {
+    background-color:  #0a0909;
+    color: #f7f2f2;
+}
+#showItemsBtn{ margin: 0 10px;
+    background-color: black;
+    opacity: .7;
+    color: #fffafa;
+    font-weight: bold;
+    border: 2px solid #fffcfc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+#showItemsBtn:hover {
+    background-color: #ded7d7;
+    color: #0a0909;
+}
+
+#selectedDateItemsContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    z-index: 9999; /* Ensure it appears above other elements */
+}
+
+#selectedDateItemsContainer button {
+    background-color: red;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    margin-top: 20px;
+    margin-left: 250px;
+
+}
+
+#selectedDateItemsContainer button:hover {
+    color: #120d0d;     
+}
+
+#selectedDateItemsTable {
+    margin-top: 20px;
+}
+
+#selectedDateItemsTable th,
+#selectedDateItemsTable td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#searchContainer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 600px; /* Set the width of the search input box */
+    padding: 10px; /* Add padding for better visual appearance */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    border: 2px solid #ccc; /* Add border for visual clarity */
+    font-size: 16px; /* Adjust font size for better readability */
+}
+
+
+#searchButton {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: 2px solid #ccc; /* Add border for visual clarity */
+    font-size: 16px; /* Adjust font size for better readability */
+}
+
+
+.alert-error {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #dc3545; /* Red background color */
+    color: #fff; /* White text color */
+    z-index: 9999;
+}
+
+
+    
+/* CSS for custom prompt */
+.custom-prompt {
+    background-color: rgba(255, 255, 255, 0.5); /* Transparent background */
+    border: 1px solid black; /* Black border on hover */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 90%;
+    position: fixed;
+    top: 20px; /* Adjust top position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.custom-prompt input[type="text"] {
+    width: calc(100% - 20px); /* Adjust width to fit within the prompt box */
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.custom-prompt button {
+    background-color: rgba(12, 7, 7, 0.7); /* Transparent background */
+    margin-left: 120px;
+    margin-top: 10px;
+    padding: 8px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.custom-prompt p {
+    text-align: center; /* Horizontally center the text */
+    margin: auto; /* Center the text vertically */
+    font-weight:bolder; /* Make the prompt name bold */
+
+}
+
+
+.custom-prompt button:hover {
+    border: 1px solid black; /* Black border on hover */
+    background-color: rgba(255, 255, 255, 0.3); /* White transparent background on hover */
+    color: black; /* Black text color on hover */
+}
+
+.custom-prompt input[type="text"] {
+    width: calc(100% - 20px); /* Adjust width to fit within the prompt box */
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}

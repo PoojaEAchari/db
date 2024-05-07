@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groceries List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body> 
+    <h1>Groceries List</h1>
+<div id="searchContainer">
+    <input type="text" id="searchInput" placeholder="Search item...">
+    <button id="searchButton">Search</button>
+</div>
+
+    <!-- Input field and button to select date -->
+    <div class="btns">
+        <input type="date" id="selectedDate">
+        <button id="showItemsBtn">Show Items for Selected Date</button>
+    </div>
+    <!-- Form to add item -->
+    <div id="alertBox" style="display: none;"></div>
+    <form id="addItemForm">
+        <input type="text" id="itemName" placeholder="Item name" required>
+        <input type="number" id="itemQuantity" placeholder="Quantity" required>
+        <select id="quantityUnit" required>
+            <option value="">Select Unit</option>
+            <option value="kg">KG</option>
+            <option value="g">G</option>
+            <option value="L">L</option>
+            <option value="mL">ML</option>
+        </select>
+        <input type="date" id="itemDate" required> <!-- Date input field -->
+        <button type="submit">Add Item</button>
+    </form>
+    <!-- Display items -->
+    <div class="item-container">
+        <table id="itemTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Select</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="itemTableBody"></tbody>
+        </table>
+    </div>
+    <!-- Refresh and delete buttons -->
+    <div class="buttons-container">
+        <button id="deleteSelectedItemsBtn">Delete Selected Items</button>
+        <button id="refreshItemsBtn">Refresh page</button>
+    </div>
+    
+    <!-- Selected date items container -->
+   <!-- Selected date items container -->
+<div id="selectedDateItemsContainer" style="display: none;">
+    <h2 id="selectedDateHeading"></h2>
+    <table id="selectedDateItemsTable">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+            </tr>
+        </thead>
+        <tbody id="selectedDateItems"></tbody>
+    </table>
+    <button id="closeSelectedDateItemsBtn">Close</button>
+
+</div>
+
+    <!-- JavaScript code -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
